@@ -1,22 +1,34 @@
 package web.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.ArrayList;
-import java.util.List;
+import web.service.UserService;
 
 @Controller
 public class UserController {
-    @GetMapping(value = "/")
-    public String printWelcome(ModelMap model) {
-        List<String> messages = new ArrayList<>();
-        messages.add("Hello!");
-        messages.add("I'm Spring MVC application");
-        messages.add("5.2.0 version by sep'19 ");
-        model.addAttribute("messages", messages);
-        return "index";
+
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
+
+    @GetMapping("/")
+    public String printWelcome() {
+        return "hello";
+    }
+    @GetMapping("/new")
+    public String addUser() {
+        return "new";
+    }
+    @GetMapping("/change")
+    public String changeUser() {
+        return "change";
+    }
+    @GetMapping("/delete")
+    public String deleteUser() {
+        return "delete";
+    }
+
 }

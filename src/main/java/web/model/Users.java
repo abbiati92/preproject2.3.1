@@ -3,23 +3,24 @@ package web.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="person")
-public class Person {
+@Table(name="Users")
+public class Users {
 
     @Id
     @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name="name")
     private String name;
     @Column(name="age")
     private int age;
 
-    public Person(int id, String name, int age) {
+    public Users(int id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
-    public Person() {}
+    public Users() {}
 
     public int getId() {
         return id;

@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DB Users</title>
 </head>
 <body>
-<h1>hello BOGDAN</h1>
+<h1>Data Base Users</h1>
+<table border="1" style="width:300px">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Age</td>
+    </tr>
+    <tr th:each="user : ${ListOfUsers}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getAge()}"></td>
+    </tr>
+</table>
+<br>
 <lb>
-    <h3>
-        <a href="new">добавить пользователя</a>
-    </h3>
+    <form action="new" method="get">
+       <lb><button type="submit">Добавить пользователя</button></lb>
+    </form>
 </lb>
+
+<br>
+
 <lb>
-    <h3>
-        <a href="change">изменить пользователя</a>
-    </h3>
+    <form action="change" method="get">
+        <lb><button type="submit">Изменить пользователя</button></lb>
+    </form>
 </lb>
+
+<br>
+
 <lb>
-    <h3>
-        <a href="delete">удалить пользователя</a>
-    </h3>
+    <form action="delete" method="get">
+        <lb><button type="submit">Удалить пользователя</button></lb>
+    </form>
 </lb>
 </body>
 </html>

@@ -38,13 +38,22 @@ public class UserController {
     }
 
 
-    @GetMapping("/change")
-    public String changeUser() {
-        return "change";
+    @GetMapping("/edit")
+    public String editUser(@RequestParam("id") int id, Model model) {
+        model.addAttribute("editUser" , userService.getUserById(id));
+        return "edit";
     }
-    @GetMapping("/delete")
-    public String deleteUser() {
-        return "delete";
+    @PatchMapping("/edit")
+    public String update(@RequestParam("id") int id, @ModelAttribute("editUsers") @Valid Users updateUsers) {
+        userService.editUser(id, updateUsers);
+        return "redirect:/";
+    }
+
+
+    @DeleteMapping("/delete")
+    public String deleteUser(@RequestParam("id") int id) {
+        userService.deleteUser(id);
+        return "redirect:/";
     }
 
 }

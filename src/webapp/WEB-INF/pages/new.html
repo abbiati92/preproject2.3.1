@@ -6,8 +6,6 @@
 </head>
 <body>
     <form th:method="post" th:action="@{/}" th:object="${users}">
-        <label for="id">Введите id</label>
-        <input type="text" th:field="*{id}" id="id">
         <br>
         <label for="name">Введите имя</label>
         <input type="text" th:field="*{name}" id="name">

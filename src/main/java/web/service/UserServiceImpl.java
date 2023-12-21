@@ -1,11 +1,9 @@
 package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
-import web.model.Users;
 import web.model.Users;
 
 import java.util.List;
@@ -33,12 +31,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeUser() {
-        userDao.changeUser();
+    @Transactional
+    public void editUser(int id, Users updateUsers) {
+        userDao.editUser(id,updateUsers);
     }
 
     @Override
-    public void deleteUser() {
-        userDao.deleteUser();
+    @Transactional
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public Users getUserById(int id) {
+        return userDao.getUserById(id);
     }
 }

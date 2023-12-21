@@ -19,26 +19,16 @@
     </tr>
 </table>
 <br>
-<lb>
-    <form action="new" method="get">
-       <lb><button type="submit">Добавить пользователя</button></lb>
+    <form th:action="@{/new}" th:method="GET">
+       <button type="submit">Добавить пользователя</button>
     </form>
-</lb>
-
 <br>
-
-<lb>
-    <form action="change" method="get">
-        <lb><button type="submit">Изменить пользователя</button></lb>
+    <form th:action="@{/edit}" th:method="GET">
+        <button type="submit">Изменить пользователя</button>
     </form>
-</lb>
-
 <br>
-
-<lb>
-    <form action="delete" method="get">
-        <lb><button type="submit">Удалить пользователя</button></lb>
-    </form>
-</lb>
+<form th:action="@{/delete}" th:method="DELETE">
+    <button type="submit">Удалить пользователя</button>
+</form>
 </body>
 </html>
